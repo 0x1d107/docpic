@@ -1,0 +1,11 @@
+#!/bin/env python
+import docx,argparse
+parser = argparse.ArgumentParser(description="DocPic - package images to docx.")
+parser.add_argument('image',nargs='+')
+parser.add_argument('-o',metavar='OUT',help='Output file')
+args = parser.parse_args()
+doc = docx.Document()
+for img in args.image:
+    doc.add_picture(img)
+if args.o:
+    doc.save(args.o)
